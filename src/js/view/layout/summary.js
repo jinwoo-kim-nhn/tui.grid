@@ -213,7 +213,7 @@ var Summary = View.extend(/** @lends module:view/layout/summary.prototype */{
             return memo + this.templateHeader({
                 attrColumnName: ATTR_COLUMN_NAME,
                 columnName: columnName,
-                className: classNameConst.CELL_HEAD + ' ' + classNameConst.CELL,
+                className: classNameConst.CELL + ' ' + classNameConst.CELL_SUMMARY,
                 value: this._generateValueHTML(columnName, valueMap)
             });
         }, '', this);

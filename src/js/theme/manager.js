@@ -13,7 +13,7 @@ var themeNameConst = require('../common/constMap').themeName;
 var STYLE_ELEMENT_ID = 'tui-grid-theme-style';
 
 var presetOptions = {};
-presetOptions[themeNameConst.DEFAULT] = require('./preset/default');
+presetOptions[themeNameConst.DEFAULT] = require('./preset/normal');
 presetOptions[themeNameConst.STRIPED] = require('./preset/striped');
 presetOptions[themeNameConst.CLEAN] = require('./preset/clean');
 
@@ -39,6 +39,7 @@ function buildCssString(options) {
             styleGen.cellDummy(cell.dummy),
             styleGen.cellEditable(cell.editable),
             styleGen.cellHead(cell.head),
+            styleGen.cellSummary(cell.summary),
             styleGen.cellOddRow(cell.oddRow),
             styleGen.cellEvenRow(cell.evenRow),
             styleGen.cellRequired(cell.required),

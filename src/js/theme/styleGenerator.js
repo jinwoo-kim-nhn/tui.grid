@@ -164,10 +164,22 @@ module.exports = {
             .bg(options.background)
             .border(options.border);
 
-        var summaryAreaRule = classRule(classNameConst.SUMMARY_AREA)
-            .bg(options.background);
+        return builder.buildAll([headRule, headAreaRule]);
+    },
 
-        return builder.buildAll([headRule, headAreaRule, summaryAreaRule]);
+    /*
+     * Generates a css string for summary cells.
+     * @param {Object} options - options
+     * @returns {String}
+     */
+    cellSummary: function(options) {
+        var summaryRule = classRule(classNameConst.CELL_SUMMARY)
+            .bg(options.background)
+            .border(options.border)
+            .borderWidth(options)
+            .text(options.text);
+
+        return builder.buildAll([summaryRule]);
     },
 
     /**
