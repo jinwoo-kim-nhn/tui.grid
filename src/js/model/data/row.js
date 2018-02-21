@@ -314,6 +314,7 @@ var Row = Model.extend(/** @lends module:model/data/row.prototype */{
         }
         if (isMetaColumn) {
             classNameList.push(classNameConst.CELL_HEAD);
+            classNameList.push(classNameConst.CELL_ROW_HEAD);
         } else if (cellState.editable) {
             classNameList.push(classNameConst.CELL_EDITABLE);
         }

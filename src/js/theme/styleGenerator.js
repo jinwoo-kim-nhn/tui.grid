@@ -168,6 +168,21 @@ module.exports = {
     },
 
     /*
+     * Generates a css string for row's head cells.
+     * @param {Object} options - options
+     * @returns {String}
+     */
+    cellRowHead: function(options) {
+        var rowHeadRule = classRule(classNameConst.CELL_ROW_HEAD)
+            .bg(options.background)
+            .border(options.border)
+            .borderWidth(options)
+            .text(options.text);
+
+        return builder.buildAll([rowHeadRule]);
+    },
+
+    /*
      * Generates a css string for summary cells.
      * @param {Object} options - options
      * @returns {String}

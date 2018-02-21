@@ -41,6 +41,12 @@ module.exports = {
             showVerticalBorder: true,
             showHorizontalBorder: true
         },
+        rowHead: {
+            background: '#eee',
+            border: '#ccc',
+            showVerticalBorder: true,
+            showHorizontalBorder: true
+        },
         summary: {
             background: '#eee',
             border: '#ccc',

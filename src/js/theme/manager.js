@@ -39,6 +39,7 @@ function buildCssString(options) {
             styleGen.cellDummy(cell.dummy),
             styleGen.cellEditable(cell.editable),
             styleGen.cellHead(cell.head),
+            styleGen.cellRowHead(cell.rowHead),
             styleGen.cellSummary(cell.summary),
             styleGen.cellOddRow(cell.oddRow),
             styleGen.cellEvenRow(cell.evenRow),

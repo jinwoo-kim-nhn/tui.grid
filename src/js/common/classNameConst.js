@@ -92,6 +92,7 @@ var classNames = {
     // cell style
     CELL: 'cell',
     CELL_HEAD: 'cell-head',
+    CELL_ROW_HEAD: 'cell-row-head',
     CELL_SUMMARY: 'cell-summary',
     CELL_ROW_ODD: 'cell-row-odd',
     CELL_ROW_EVEN: 'cell-row-even',
