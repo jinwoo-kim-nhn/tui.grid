@@ -110,12 +110,22 @@ module.exports = {
     scrollbar: function(options) {
         var webkitScrollbarRules = builder.createWebkitScrollbarRules('.' + classNameConst.CONTAINER, options);
         var ieScrollbarRule = builder.createIEScrollbarRule('.' + classNameConst.CONTAINER, options);
+
         var rightBottomRule = classRule(classNameConst.SCROLLBAR_RIGHT_BOTTOM).bg(options.background);
         var leftBottomRule = classRule(classNameConst.SCROLLBAR_LEFT_BOTTOM).bg(options.background);
-        var scrollHeadRule = classRule(classNameConst.SCROLLBAR_HEAD).bg(options.background);
+
+        var outerScrollBorderRule = classRule(classNameConst.BORDER_RIGHT).bg(options.border);
+        var innerScrollBorderRule = classRule(classNameConst.SCROLLBAR_BORDER).bg(options.border);
+
+        var scrollHeadRule = classRule(classNameConst.SCROLLBAR_HEAD)
+            .bg(options.foreground)
+            .border(options.border);
+
         var summaryRightRule = classRule(classNameConst.SUMMARY_AREA_RIGHT).bg(options.background);
         var bodyAreaRule = classRule(classNameConst.BODY_AREA).bg(options.background);
         var frozenBorderRule = classRule(classNameConst.FROZEN_BORDER_BOTTOM).bg(options.background);
+
+        // var scrollBorderRule = classRule(classNameConst.SCROLLBAR_BORDER).bg(options.border);
 
         return builder.buildAll(webkitScrollbarRules.concat([
             ieScrollbarRule,
@@ -124,7 +134,10 @@ module.exports = {
             scrollHeadRule,
             summaryRightRule,
             bodyAreaRule,
-            frozenBorderRule
+            frozenBorderRule,
+
+            outerScrollBorderRule,
+            innerScrollBorderRule
         ]));
     },
 
