@@ -74,6 +74,24 @@ var CSSRuleBuilder = snippet.defineClass({
         return this;
     },
 
+    tableBorderStyle: function(options, type) {
+        var vertical = options.showVerticalBorder;
+        var value;
+
+        if (_.isBoolean(vertical)) {
+            value = vertical ? 'solid' : 'hidden';
+
+            if (type === 'both') {
+                this.add('border-left-style', value)
+                    .add('border-right-style', value);
+            } else {
+                this.add('border-' + type + '-style', value);
+            }
+        }
+
+        return this;
+    },
+
     /**
      * Shortcut for add('background-color', value)
      * @param {String} value - css value

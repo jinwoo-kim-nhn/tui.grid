@@ -9,7 +9,13 @@ module.exports = {
     grid: {
         background: '#fff',
         border: '#ccc',
-        text: '#444'
+        text: '#444',
+        header: {
+            border: 'blue',
+            showVerticalBorder: true
+        },
+        body: {},
+        summary: {}
     },
     selection: {
         background: '#4daaf9',

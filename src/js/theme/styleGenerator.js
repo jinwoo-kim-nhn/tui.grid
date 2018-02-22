@@ -51,28 +51,45 @@ module.exports = {
      * @returns {String}
      */
     grid: function(options) {
-        var containerRule = classRule(classNameConst.CONTAINER)
-            .bg(options.background)
-            .text(options.text);
-        var contentAreaRule = classRule(classNameConst.CONTENT_AREA).border(options.border);
-        var tableRule = classRule(classNameConst.TABLE).border(options.border);
-        var headerRule = classRule(classNameConst.HEAD_AREA).border(options.border);
-        var summaryRule = classRule(classNameConst.SUMMARY_AREA).border(options.border);
-        var borderLineRule = classRule(classNameConst.BORDER_LINE).bg(options.border);
-        var scrollHeadRule = classRule(classNameConst.SCROLLBAR_HEAD).border(options.border);
-        var scrollBorderRule = classRule(classNameConst.SCROLLBAR_BORDER).bg(options.border);
-        var summaryRightRule = classRule(classNameConst.SUMMARY_AREA_RIGHT).border(options.border);
+        // var containerRule = classRule(classNameConst.CONTAINER)
+        //     .bg(options.background)
+        //     .text(options.text);
+        // var contentAreaRule = classRule(classNameConst.CONTENT_AREA).border(options.border);
+        // var tableRule = classRule(classNameConst.TABLE).border(options.border);
+        // var headerRule = classRule(classNameConst.HEAD_AREA).border(options.border);
+        // var summaryRule = classRule(classNameConst.SUMMARY_AREA).border(options.border);
+        // var borderLineRule = classRule(classNameConst.BORDER_LINE).bg(options.border);
+        // var scrollHeadRule = classRule(classNameConst.SCROLLBAR_HEAD).border(options.border);
+        // var scrollBorderRule = classRule(classNameConst.SCROLLBAR_BORDER).bg(options.border);
+        // var summaryRightRule = classRule(classNameConst.SUMMARY_AREA_RIGHT).border(options.border);
+        //
+        // return builder.buildAll([
+        //     containerRule,
+        //     contentAreaRule,
+        //     tableRule,
+        //     headerRule,
+        //     summaryRule,
+        //     borderLineRule,
+        //     scrollHeadRule,
+        //     scrollBorderRule,
+        //     summaryRightRule
+        // ]);
+
+        return this.headArea(options.header);
+    },
+
+    headArea: function(options) {
+        var tableRule = classRule(
+            classNameConst.HEAD_AREA +
+            ' .' + classNameConst.TABLE
+        ).tableBorderStyle(options, 'both');
+        var borderTopRule = classRule(classNameConst.BORDER_TOP).bg(options.border);
+        var borderBottomRule = classRule(classNameConst.HEAD_AREA).border(options.border);
 
         return builder.buildAll([
-            containerRule,
-            contentAreaRule,
             tableRule,
-            headerRule,
-            summaryRule,
-            borderLineRule,
-            scrollHeadRule,
-            scrollBorderRule,
-            summaryRightRule
+            borderTopRule,
+            borderBottomRule
         ]);
     },
 
@@ -161,8 +178,7 @@ module.exports = {
             .text(options.text);
 
         var headAreaRule = classRule(classNameConst.HEAD_AREA)
-            .bg(options.background)
-            .border(options.border);
+            .bg(options.background);
 
         return builder.buildAll([headRule, headAreaRule]);
     },
