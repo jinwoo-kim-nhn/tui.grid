@@ -14,7 +14,10 @@ module.exports = {
             border: 'blue',
             showVerticalBorder: true
         },
-        body: {},
+        body: {
+            border: 'blue',
+            showVerticalBorder: true
+        },
         summary: {}
     },
     selection: {

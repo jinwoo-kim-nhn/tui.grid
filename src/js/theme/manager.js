@@ -25,7 +25,9 @@ presetOptions[themeNameConst.CLEAN] = require('./preset/clean');
  */
 function buildCssString(options) {
     var styles = [
-        styleGen.grid(options.grid),
+        // styleGen.grid(options.grid),
+        styleGen.headArea(options.grid.header),
+        styleGen.bodyArea(options.grid.body),
         styleGen.scrollbar(options.scrollbar),
         styleGen.heightResizeHandle(options.heightResizeHandle),
         styleGen.pagination(options.pagination),
