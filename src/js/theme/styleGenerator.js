@@ -96,9 +96,11 @@ module.exports = {
             classNameConst.BODY_AREA +
             ' .' + classNameConst.TABLE
         ).tableBorderStyle(options, 'both');
+        var borderBottomRule = classRule(classNameConst.BORDER_BOTTOM).bg(options.border);
 
         return builder.buildAll([
-            tableRule
+            tableRule,
+            borderBottomRule
         ]);
     },
 
