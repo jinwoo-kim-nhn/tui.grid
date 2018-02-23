@@ -46,73 +46,6 @@ function bgBorderRuleString(className, options) {
 
 module.exports = {
     /**
-     * Generates a css string for the grid.
-     * @param {Object} options - options
-     * @returns {String}
-     */
-    grid: function(options) {
-        var containerRule = classRule(classNameConst.CONTAINER)
-            .bg(options.background)
-            .text(options.text);
-        var contentAreaRule = classRule(classNameConst.CONTENT_AREA).border(options.border);
-        var tableRule = classRule(classNameConst.TABLE).border(options.border);
-        var headerRule = classRule(classNameConst.HEAD_AREA).border(options.border);
-        var summaryRule = classRule(classNameConst.SUMMARY_AREA).border(options.border);
-        var borderLineRule = classRule(classNameConst.BORDER_LINE).bg(options.border);
-        var scrollHeadRule = classRule(classNameConst.SCROLLBAR_HEAD).border(options.border);
-        var scrollBorderRule = classRule(classNameConst.SCROLLBAR_Y_INNER_BORDER).bg(options.border);
-
-        return builder.buildAll([
-            containerRule,
-            contentAreaRule,
-            tableRule,
-            headerRule,
-            summaryRule,
-            borderLineRule,
-            scrollHeadRule,
-            scrollBorderRule
-        ]);
-    },
-
-    headArea: function(options) {
-        var tableRule = classRule(
-            classNameConst.HEAD_AREA + ' .' + classNameConst.TABLE
-        ).tableBorderStyle(options);
-        var borderTopRule = classRule(classNameConst.BORDER_TOP).bg(options.border);
-        var borderBottomRule = classRule(classNameConst.HEAD_AREA).border(options.border);
-
-        return builder.buildAll([
-            tableRule,
-            borderTopRule,
-            borderBottomRule
-        ]);
-    },
-
-    bodyArea: function(options) {
-        var tableRule = classRule(
-            classNameConst.BODY_AREA + ' .' + classNameConst.TABLE
-        ).tableBorderStyle(options);
-        var borderBottomRule = classRule(
-            classNameConst.NO_SCROLL_X + ' .' + classNameConst.BORDER_BOTTOM
-        ).bg(options.border);
-
-        return builder.buildAll([
-            tableRule,
-            borderBottomRule
-        ]);
-    },
-
-    summaryArea: function(options) {
-        var tableRule = classRule(
-            classNameConst.SUMMARY_AREA + ' .' + classNameConst.TABLE
-        ).tableBorderStyle(options);
-
-        return builder.buildAll([
-            tableRule
-        ]);
-    },
-
-    /**
      * Generates a css string for scrollbars.
      * @param {Object} options - options
      * @returns {String}
@@ -177,6 +110,50 @@ module.exports = {
         return bgBorderRuleString(classNameConst.LAYER_SELECTION, options);
     },
 
+    headArea: function(options) {
+        var contentAreaRule = classRule(classNameConst.HEAD_AREA).bg(options.background)
+        var tableRule = classRule(
+            classNameConst.HEAD_AREA + ' .' + classNameConst.TABLE
+        ).tableBorderStyle(options);
+        var borderTopRule = classRule(classNameConst.BORDER_TOP).bg(options.border);
+        var borderBottomRule = classRule(classNameConst.HEAD_AREA).border(options.border);
+
+        return builder.buildAll([
+            contentAreaRule,
+            tableRule,
+            borderTopRule,
+            borderBottomRule
+        ]);
+    },
+
+    bodyArea: function(options) {
+        var contentAreaRule = classRule(classNameConst.BODY_AREA).bg(options.background)
+        var tableRule = classRule(
+            classNameConst.BODY_AREA + ' .' + classNameConst.TABLE
+        ).tableBorderStyle(options);
+        var borderBottomRule = classRule(
+            classNameConst.NO_SCROLL_X + ' .' + classNameConst.BORDER_BOTTOM
+        ).bg(options.border);
+
+        return builder.buildAll([
+            contentAreaRule,
+            tableRule,
+            borderBottomRule
+        ]);
+    },
+
+    summaryArea: function(options) {
+        var contentAreaRule = classRule(classNameConst.SUMMARY_AREA).bg(options.background);
+        var tableRule = classRule(
+            classNameConst.SUMMARY_AREA + ' .' + classNameConst.TABLE
+        ).tableBorderStyle(options);
+
+        return builder.buildAll([
+            contentAreaRule,
+            tableRule
+        ]);
+    },
+
     /**
      * Generates a css string for table cells.
      * @param {Object} options - options
@@ -208,10 +185,7 @@ module.exports = {
             .borderWidth(options)
             .text(options.text);
 
-        var headAreaRule = classRule(classNameConst.HEAD_AREA)
-            .bg(options.background);
-
-        return builder.buildAll([headRule, headAreaRule]);
+        return builder.buildAll([headRule]);
     },
 
     /*

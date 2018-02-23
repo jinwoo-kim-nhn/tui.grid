@@ -6,23 +6,6 @@
 'use strict';
 
 module.exports = {
-    grid: {
-        background: '#fff',
-        border: '#ccc',
-        text: '#444',
-        header: {
-            border: 'blue',
-            showVerticalBorder: true
-        },
-        body: {
-            border: 'blue',
-            showVerticalBorder: true
-        },
-        summary: {
-            border: 'blue',
-            showVerticalBorder: true
-        }
-    },
     selection: {
         background: '#4daaf9',
         border: '#004082'
@@ -36,33 +19,55 @@ module.exports = {
         background: 'transparent'
     },
     scrollbar: {
-        background: '#f5f5f5',
-        thumb: '#d9d9d9',
-        active: '#c1c1c1'
+        border: '#eee',
+        background: '#fff',
+        foreground: '#eee',
+        thumb: '#eee',
+        active: '#eee'
+    },
+    area: {
+        header: {
+            background: '#eee',
+            border: '#aaa',
+            showVerticalBorder: false
+        },
+        body: {
+            background: '#eee',
+            border: '#aaa',
+            showVerticalBorder: false
+        },
+        summary: {
+            background: '#fff',
+            showVerticalBorder: false
+        }
     },
     cell: {
         normal: {
-            background: '#fbfbfb',
-            border: '#e0e0e0',
-            showVerticalBorder: true,
+            background: '#f4f4f4',
+            border: '#eee',
+            text: '#333',
+            showVerticalBorder: false,
             showHorizontalBorder: true
         },
         head: {
-            background: '#eee',
-            border: '#ccc',
+            background: '#fff',
+            border: '#eee',
+            text: '#222',
             showVerticalBorder: true,
             showHorizontalBorder: true
         },
         rowHead: {
-            background: '#eee',
-            border: '#ccc',
+            background: '#fff',
+            border: '#eee',
+            text: '#333',
             showVerticalBorder: true,
             showHorizontalBorder: true
         },
         summary: {
-            background: '#eee',
-            border: '#ccc',
-            showVerticalBorder: true,
+            background: '#fff',
+            border: '#eee',
+            text: '#333',
+            showVerticalBorder: false,
             showHorizontalBorder: true
         },
         selectedHead: {

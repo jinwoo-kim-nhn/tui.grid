@@ -25,16 +25,19 @@ presetOptions[themeNameConst.CLEAN] = require('./preset/clean');
  */
 function buildCssString(options) {
     var styles = [
-        // styleGen.grid(options.grid),
-        styleGen.headArea(options.grid.header),
-        styleGen.bodyArea(options.grid.body),
-        styleGen.summaryArea(options.grid.summary),
         styleGen.scrollbar(options.scrollbar),
         styleGen.heightResizeHandle(options.heightResizeHandle),
         styleGen.pagination(options.pagination),
         styleGen.selection(options.selection)
     ];
+    var area = options.area;
     var cell = options.cell;
+
+    styles = styles.concat([
+        styleGen.headArea(area.header),
+        styleGen.bodyArea(area.body),
+        styleGen.summaryArea(area.summary)
+    ]);
 
     if (cell) {
         styles = styles.concat([
