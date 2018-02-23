@@ -67,7 +67,9 @@ var classNames = {
 
     // scrollbar
     SCROLLBAR_HEAD: 'scrollbar-head',
-    SCROLLBAR_BORDER: 'scrollbar-border',
+    SCROLLBAR_Y_INNER_BORDER: 'scrollbar-y-inner-border',
+    SCROLLBAR_Y_OUTER_BORDER: 'scrollbar-y-outer-border',
+    SCROLLBAR_FROZEN_BORDER: 'scrollbar-frozen-border',
     SCROLLBAR_RIGHT_BOTTOM: 'scrollbar-right-bottom',
     SCROLLBAR_LEFT_BOTTOM: 'scrollbar-left-bottom',
 

@@ -60,7 +60,7 @@ module.exports = {
         var summaryRule = classRule(classNameConst.SUMMARY_AREA).border(options.border);
         var borderLineRule = classRule(classNameConst.BORDER_LINE).bg(options.border);
         var scrollHeadRule = classRule(classNameConst.SCROLLBAR_HEAD).border(options.border);
-        var scrollBorderRule = classRule(classNameConst.SCROLLBAR_BORDER).bg(options.border);
+        var scrollBorderRule = classRule(classNameConst.SCROLLBAR_Y_INNER_BORDER).bg(options.border);
         var summaryRightRule = classRule(classNameConst.SUMMARY_AREA_RIGHT).border(options.border);
 
         return builder.buildAll([
@@ -80,7 +80,7 @@ module.exports = {
         var tableRule = classRule(
             classNameConst.HEAD_AREA +
             ' .' + classNameConst.TABLE
-        ).tableBorderStyle(options, 'both');
+        ).tableBorderStyle(options);
         var borderTopRule = classRule(classNameConst.BORDER_TOP).bg(options.border);
         var borderBottomRule = classRule(classNameConst.HEAD_AREA).border(options.border);
 
@@ -95,8 +95,11 @@ module.exports = {
         var tableRule = classRule(
             classNameConst.BODY_AREA +
             ' .' + classNameConst.TABLE
-        ).tableBorderStyle(options, 'both');
-        var borderBottomRule = classRule(classNameConst.BORDER_BOTTOM).bg(options.border);
+        ).tableBorderStyle(options);
+        var borderBottomRule = classRule(
+            classNameConst.NO_SCROLL_X +
+            ' .' + classNameConst.BORDER_BOTTOM
+        ).bg(options.border);
 
         return builder.buildAll([
             tableRule,
@@ -112,34 +115,36 @@ module.exports = {
     scrollbar: function(options) {
         var webkitScrollbarRules = builder.createWebkitScrollbarRules('.' + classNameConst.CONTAINER, options);
         var ieScrollbarRule = builder.createIEScrollbarRule('.' + classNameConst.CONTAINER, options);
-
-        var rightBottomRule = classRule(classNameConst.SCROLLBAR_RIGHT_BOTTOM).bg(options.background);
-        var leftBottomRule = classRule(classNameConst.SCROLLBAR_LEFT_BOTTOM).bg(options.background);
-
-        var outerScrollBorderRule = classRule(classNameConst.BORDER_RIGHT).bg(options.border);
-        var innerScrollBorderRule = classRule(classNameConst.SCROLLBAR_BORDER).bg(options.border);
-
-        var scrollHeadRule = classRule(classNameConst.SCROLLBAR_HEAD)
+        var xInnerBorderRule = classRule(classNameConst.BORDER_BOTTOM).bg(options.border);
+        var xOuterBorderRule = classRule(classNameConst.CONTENT_AREA).border(options.border);
+        var yInnerBorderRule = classRule(classNameConst.SCROLLBAR_Y_INNER_BORDER).bg(options.border);
+        var yOuterBorderRule = classRule(classNameConst.SCROLLBAR_Y_OUTER_BORDER).bg(options.border);
+        var frozenBorderRule = classRule(classNameConst.SCROLLBAR_FROZEN_BORDER)
+            .bg(options.foreground)
+            .border(options.border);
+        var spaceRightTopRule = classRule(classNameConst.SCROLLBAR_HEAD)
+            .bg(options.foreground)
+            .border(options.border);
+        var spaceRightBottomRule = classRule(classNameConst.SCROLLBAR_RIGHT_BOTTOM)
+            .bg(options.foreground)
+            .border(options.border);
+        var spaceleftBottomRule = classRule(classNameConst.SCROLLBAR_LEFT_BOTTOM)
             .bg(options.foreground)
             .border(options.border);
 
         var summaryRightRule = classRule(classNameConst.SUMMARY_AREA_RIGHT).bg(options.background);
-        var bodyAreaRule = classRule(classNameConst.BODY_AREA).bg(options.background);
-        var frozenBorderRule = classRule(classNameConst.FROZEN_BORDER_BOTTOM).bg(options.background);
-
-        // var scrollBorderRule = classRule(classNameConst.SCROLLBAR_BORDER).bg(options.border);
 
         return builder.buildAll(webkitScrollbarRules.concat([
             ieScrollbarRule,
-            rightBottomRule,
-            leftBottomRule,
-            scrollHeadRule,
-            summaryRightRule,
-            bodyAreaRule,
+            xInnerBorderRule,
+            xOuterBorderRule,
+            yInnerBorderRule,
+            yOuterBorderRule,
             frozenBorderRule,
-
-            outerScrollBorderRule,
-            innerScrollBorderRule
+            spaceRightTopRule,
+            spaceRightBottomRule,
+            spaceleftBottomRule,
+            summaryRightRule
         ]));
     },
 
