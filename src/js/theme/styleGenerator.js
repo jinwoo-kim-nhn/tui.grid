@@ -61,7 +61,6 @@ module.exports = {
         var borderLineRule = classRule(classNameConst.BORDER_LINE).bg(options.border);
         var scrollHeadRule = classRule(classNameConst.SCROLLBAR_HEAD).border(options.border);
         var scrollBorderRule = classRule(classNameConst.SCROLLBAR_Y_INNER_BORDER).bg(options.border);
-        var summaryRightRule = classRule(classNameConst.SUMMARY_AREA_RIGHT).border(options.border);
 
         return builder.buildAll([
             containerRule,
@@ -71,15 +70,13 @@ module.exports = {
             summaryRule,
             borderLineRule,
             scrollHeadRule,
-            scrollBorderRule,
-            summaryRightRule
+            scrollBorderRule
         ]);
     },
 
     headArea: function(options) {
         var tableRule = classRule(
-            classNameConst.HEAD_AREA +
-            ' .' + classNameConst.TABLE
+            classNameConst.HEAD_AREA + ' .' + classNameConst.TABLE
         ).tableBorderStyle(options);
         var borderTopRule = classRule(classNameConst.BORDER_TOP).bg(options.border);
         var borderBottomRule = classRule(classNameConst.HEAD_AREA).border(options.border);
@@ -93,17 +90,25 @@ module.exports = {
 
     bodyArea: function(options) {
         var tableRule = classRule(
-            classNameConst.BODY_AREA +
-            ' .' + classNameConst.TABLE
+            classNameConst.BODY_AREA + ' .' + classNameConst.TABLE
         ).tableBorderStyle(options);
         var borderBottomRule = classRule(
-            classNameConst.NO_SCROLL_X +
-            ' .' + classNameConst.BORDER_BOTTOM
+            classNameConst.NO_SCROLL_X + ' .' + classNameConst.BORDER_BOTTOM
         ).bg(options.border);
 
         return builder.buildAll([
             tableRule,
             borderBottomRule
+        ]);
+    },
+
+    summaryArea: function(options) {
+        var tableRule = classRule(
+            classNameConst.SUMMARY_AREA + ' .' + classNameConst.TABLE
+        ).tableBorderStyle(options);
+
+        return builder.buildAll([
+            tableRule
         ]);
     },
 
@@ -132,8 +137,6 @@ module.exports = {
             .bg(options.foreground)
             .border(options.border);
 
-        var summaryRightRule = classRule(classNameConst.SUMMARY_AREA_RIGHT).bg(options.background);
-
         return builder.buildAll(webkitScrollbarRules.concat([
             ieScrollbarRule,
             xInnerBorderRule,
@@ -143,8 +146,7 @@ module.exports = {
             frozenBorderRule,
             spaceRightTopRule,
             spaceRightBottomRule,
-            spaceleftBottomRule,
-            summaryRightRule
+            spaceleftBottomRule
         ]));
     },
 

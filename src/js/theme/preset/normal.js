@@ -18,7 +18,10 @@ module.exports = {
             border: 'blue',
             showVerticalBorder: true
         },
-        summary: {}
+        summary: {
+            border: 'blue',
+            showVerticalBorder: true
+        }
     },
     selection: {
         background: '#4daaf9',

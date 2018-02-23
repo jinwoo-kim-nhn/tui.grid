@@ -28,6 +28,7 @@ function buildCssString(options) {
         // styleGen.grid(options.grid),
         styleGen.headArea(options.grid.header),
         styleGen.bodyArea(options.grid.body),
+        styleGen.summaryArea(options.grid.summary),
         styleGen.scrollbar(options.scrollbar),
         styleGen.heightResizeHandle(options.heightResizeHandle),
         styleGen.pagination(options.pagination),

@@ -16,6 +16,7 @@ var classNames = {
     // common
     NO_SCROLL_X: 'no-scroll-x',
     NO_SCROLL_Y: 'no-scroll-y',
+    HAS_SUMMARY_TOP: 'has-summary-top',
 
     // icon
     ICO_ARROW: 'icon-arrow',
@@ -47,12 +48,6 @@ var classNames = {
     HEAD_AREA: 'head-area',
     BODY_AREA: 'body-area',
     SUMMARY_AREA: 'summary-area',
-    SUMMARY_AREA_TOP: 'summary-area-top',
-    SUMMARY_AREA_BOTTOM: 'summary-area-bottom',
-    SUMMARY_AREA_RIGHT: 'summary-area-right',
-    SUMMARY_AREA_RIGHT_TOP: 'summary-area-right-top',
-    SUMMARY_AREA_RIGHT_BOTTOM: 'summary-area-right-bottom',
-
     FROZEN_BORDER_TOP: 'frozen-border-top',
     FROZEN_BORDER_BOTTOM: 'frozen-border-bottom',
 

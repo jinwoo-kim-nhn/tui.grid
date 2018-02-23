@@ -225,10 +225,6 @@ var Summary = View.extend(/** @lends module:view/layout/summary.prototype */{
      */
     render: function() {
         var summaryHeight = this.dimensionModel.get('summaryHeight');
-        var summaryPosition = this.dimensionModel.get('summaryPosition');
-        var className = summaryPosition === 'top' ? classNameConst.SUMMARY_AREA_TOP : classNameConst.SUMMARY_AREA_BOTTOM;
-
-        this.$el.addClass(className);
 
         if (summaryHeight) {
             this.$el.html(this.template({

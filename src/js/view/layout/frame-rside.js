@@ -110,10 +110,6 @@ var RsideFrame = Frame.extend(/** @lends module:view/layout/frame-rside.prototyp
             this._setFrozenBorder(headerHeight, scrollX);
         }
 
-        if (summaryHeight) {
-            this._applyStyleToSummary(headerHeight, summaryHeight, summaryPosition, scrollX);
-        }
-
         this._resetScrollBorderHeight();
     },
 
@@ -128,9 +124,12 @@ var RsideFrame = Frame.extend(/** @lends module:view/layout/frame-rside.prototyp
      */
     _setScrollbar: function(headerHeight, summaryHeight, summaryPosition, scrollX, scrollY) {
         var $yInnerBorder, $yOuterBorder, $spaceRightTop, $spaceRightBottom, $frozenBorder;
+        var spaceRigthBottomHeight = dimensionConst.SCROLLBAR_WIDTH;
 
         if (summaryPosition === summaryPositionConst.TOP) {
             headerHeight += summaryHeight;
+        } else {
+            spaceRigthBottomHeight += summaryHeight;
         }
 
         if (scrollY) {
@@ -138,7 +137,8 @@ var RsideFrame = Frame.extend(/** @lends module:view/layout/frame-rside.prototyp
                 .addClass(classNameConst.SCROLLBAR_HEAD)
                 .height(headerHeight - 2); // subtract 2px for border-width (top and bottom)
 
-            $spaceRightBottom = $('<div />').addClass(classNameConst.SCROLLBAR_RIGHT_BOTTOM);
+            $spaceRightBottom = $('<div />')
+                .addClass(classNameConst.SCROLLBAR_RIGHT_BOTTOM);
 
             $yInnerBorder = $('<div />')
                 .addClass(classNameConst.SCROLLBAR_Y_INNER_BORDER)
@@ -152,7 +152,7 @@ var RsideFrame = Frame.extend(/** @lends module:view/layout/frame-rside.prototyp
                 .addClass(classNameConst.SCROLLBAR_FROZEN_BORDER)
                 .height(dimensionConst.SCROLLBAR_WIDTH);
 
-            $spaceRightBottom.height(dimensionConst.SCROLLBAR_WIDTH);
+            $spaceRightBottom.height(spaceRigthBottomHeight);
         }
 
         this.$el.append(
@@ -187,38 +187,8 @@ var RsideFrame = Frame.extend(/** @lends module:view/layout/frame-rside.prototyp
         // the left-border moves when the right side area is scrolled.
         $el.find('.' + classNameConst.TABLE).css('border-left-width', 0);
 
-        $el.find('.' + classNameConst.SCROLLBAR_FROZEN_BORDER).css({
-            width: frozenBorderWidth - CELL_BORDER_WIDTH
-        });
-    },
-
-    /**
-     * Apply style to summary area on right-side frame
-     * @param {number} headerHeight - Height of header area
-     * @param {number} summaryHeight - Height of summary area by setting "summary" option
-     * @param {string} summaryPosition - Position of summary area ('top' or 'bottom')
-     * @param {boolean} scrollX - Whether the grid has x-scroll or not
-     * @private
-     */
-    _applyStyleToSummary: function(headerHeight, summaryHeight, summaryPosition, scrollX) {
-        var styles = {};
-        var subClassName;
-
-        if (summaryPosition === summaryPositionConst.TOP) {
-            styles.top = headerHeight;
-            subClassName = classNameConst.SUMMARY_AREA_RIGHT_TOP;
-        } else {
-            styles.bottom = scrollX ? this.dimensionModel.getScrollXHeight() : 0;
-            subClassName = classNameConst.SUMMARY_AREA_RIGHT_BOTTOM;
-        }
-
-        styles.height = summaryHeight;
-
-        this.$el.append($('<div>')
-            .addClass(classNameConst.SUMMARY_AREA_RIGHT)
-            .addClass(subClassName)
-            .css(styles)
-        );
+        $el.find('.' + classNameConst.SCROLLBAR_FROZEN_BORDER)
+            .width(frozenBorderWidth - CELL_BORDER_WIDTH);
     }
 });
 
